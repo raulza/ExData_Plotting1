@@ -27,7 +27,7 @@
 # third is like plot3.R with a slight change in the legend, no border
     plot(datetime, FSET$Sub_metering_1, type="n", xlab="", ylab="Energy sub metering")
     lines(datetime, FSET$Sub_metering_1, col="black")
-    lines(datetim, FSET$Sub_metering_2, col="red")
+    lines(datetime, FSET$Sub_metering_2, col="red")
     lines(datetime, FSET$Sub_metering_3, col="blue")
     legend("topright", lty=c(1,1), col = c("black", "red", "blue"), bty="n",  
            legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
