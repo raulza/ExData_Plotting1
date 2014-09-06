@@ -1,6 +1,7 @@
 # read large file using fread for speed, only 4000 rows which captures 1-2 Feb 2007
 
 # first get the headers of the file and then a relevant subset
+  library("data.table")
   HD <- fread("household_power_consumption.txt", sep=";", na.strings="?", nrows=1)
   DTBL <- fread("household_power_consumption.txt", header=TRUE, sep=";", na.strings="?", skip="1/2/2007", nrows=3000)
 
@@ -12,13 +13,13 @@
 
 # handle date and times
   #convert to POSIXDT
-  datim <- strptime(paste(FSET$Date,FSET$Time), "%d/%m/%Y %H:%M:%S")
+  datetime <- strptime(paste(FSET$Date,FSET$Time), "%d/%m/%Y %H:%M:%S")
   
 # open graphics device
   png(filename="./plot2.png")
   
 # create plot and save to PNG
-  plot(datim,FSET$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
+  plot(datetime,FSET$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
   
 # close device
   dev.off()

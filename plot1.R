@@ -1,6 +1,7 @@
 # read large file using fread for speed, only 4000 rows which captures 1-2 Feb 2007
   
 # first get the headers of the file and then a relevant subset
+  library("data.table")
   HD <- fread("household_power_consumption.txt", sep=";", na.strings="?", nrows=1)
   DTBL <- fread("household_power_consumption.txt", header=TRUE, sep=";", na.strings="?", skip="1/2/2007", nrows=3000)
 
